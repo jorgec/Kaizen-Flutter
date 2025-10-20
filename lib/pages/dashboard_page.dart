@@ -217,7 +217,21 @@ class _DashboardPageState extends State<DashboardPage> {
     _sortList(completed, completedSortBy, completedReverse);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Dashboard')),
+      appBar: AppBar(
+        title: const Text('Dashboard'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.logout),
+            tooltip: 'Logout',
+            onPressed: () async {
+              await SessionService.clearSession();
+              if (context.mounted) {
+                Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
+              }
+            },
+          ),
+        ],
+      ),
       body: loading
           ? const Center(child: CircularProgressIndicator())
           : error != null
@@ -292,7 +306,7 @@ class _DashboardPageState extends State<DashboardPage> {
           icon: const Icon(Icons.analytics),
           label: const Text('View Analytics'),
           onPressed: () =>
-              Navigator.pushNamed(context, '/analytics/aptitude'),
+              Navigator.pushNamed(context, '/analytics_aptitude'),
         ),
       ],
     );

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:kaizen/pages/analytics_aptitude_page.dart';
 import 'package:kaizen/pages/assessment_page.dart';
 import 'package:kaizen/pages/prompt_page.dart';
 import 'package:kaizen/pages/results_page.dart';
@@ -75,6 +76,7 @@ class MyApp extends StatelessWidget {
             instanceId: args['instance_id'],
           );
         },
+        '/analytics_aptitude': (context) => const AnalyticsAptitudePage(),
       },
     );
   }
